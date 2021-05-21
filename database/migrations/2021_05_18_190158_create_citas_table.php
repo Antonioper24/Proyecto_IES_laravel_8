@@ -1,0 +1,40 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateCitasTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('citas', function (Blueprint $table) {
+            $table->char('id_cita',10)->nullable();
+            $table->char('num_radiogra',12)->nullable();
+            $table->string('tratamiento',40)->nullable();
+            $table->text('descripcion');
+            $table->decimal('precio',$precision = 5,$scale = 2)->nullable;
+            $table->date('fecha');
+            $table->char('num_expe',12);
+            $table->timestamps();
+            $table->unique('id_cita');
+            $table->primary('id_cita');
+            $table->foreignId('num_expe')->constrained('cliente');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('citas');
+    }
+}
