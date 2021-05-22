@@ -22,7 +22,7 @@ class CreateAdministradoresTable extends Migration
             $table->string('correo',75);
             $table->string('direccion',80)->nullable();
             $table->string('ciudad',40)->nullable();
-            $table->char('password',64)->nullable();
+            $table->string('password',80)->nullable();
             $table->char('id_personal',10);
             $table->timestamps();
             $table->unique('id_admin');
