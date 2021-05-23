@@ -26,7 +26,8 @@ class CreateClientesTable extends Migration
             $table->timestamps();
             $table->unique('num_expe');
             $table->primary('num_expe');
-            $table->foreignId('id_personal')->constrained('personal');
+	    //$table->foreignId('id_personal')->constrained('personal');
+	    $table->foreign('id_personal')->references('id_personal')->on('personal')->onDelete('cascade');
         });
     }
 

@@ -27,7 +27,8 @@ class CreateAdministradoresTable extends Migration
             $table->timestamps();
             $table->unique('id_admin');
             $table->primary('id_admin');
-            $table->foreignId('id_personal')->constrained('personal');
+	    //$table->foreignId('id_personal')->constrained('personal');
+	    $table->foreign('id_personal')->references('id_personal')->on('personal')->onDelete('cascade');
         });
     }
 
