@@ -24,7 +24,8 @@ class CreateCitasTable extends Migration
             $table->timestamps();
             $table->unique('id_cita');
             $table->primary('id_cita');
-            $table->foreignId('num_expe')->constrained('cliente');
+	    //$table->foreignId('num_expe')->constrained('cliente');
+	    $table->foreign('num_expe')->references('num_expe')->on('clientes')->onDelete('cascade');
         });
     }
 
