@@ -105,7 +105,7 @@
         <br>
         <br>
         <blockquote class="formu">
-            <form action="falla" method="POST">
+            <form action="{{ route('personal.store') }}" method="POST">
                 @csrf
                 <br>
                 <br>

@@ -47,8 +47,16 @@ Route::get('/administrador', function () {
     return view('administrador.administrador');
 })->name('administrador');
 
-/* utilización de modelos y controladores para la zona doctores*/
-Route::post('/administrador/autorizar', [AdministradorController::class, 'index'])->name('autorizacion');
+/* utilización de modelos y controladores para la zona administradores*/
+Route::post('/administrador/autorizar', [AdministradorController::class, 'login'])->name('administrador.login');
+
+Route::post('/administrador/insertar/administrador', [AdministradorController::class, 'store'])->name('administrador.store');
+
+Route::post('/administrador/insertar/clientes', [ClienteController::class, 'store'])->name('cliente.store');
+
+Route::post('/administrador/insertar/personal', [PersonalController::class, 'store'])->name('personal.store');
+
+Route::post('/administrador/comprobaciones', [AdministradorController::class, 'index'])->name('administrador.index');
 
 /* altas */
 Route::get('/adminstrador/formulariocli', function () {

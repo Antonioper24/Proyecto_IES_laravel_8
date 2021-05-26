@@ -10,4 +10,8 @@ class Cita extends Model
     use HasFactory;
 
     protected $table = "citas";
+
+    public function cliente(){
+        return $this->belongsTo('app\Models\Cliente');
+    }
 }

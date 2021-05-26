@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Personal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PersonalController extends Controller
 {
@@ -34,7 +36,22 @@ class PersonalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request;
+        /*
+        $personal = new Personal();
+
+        $personal->id_personal = $request->idperson;
+        $personal->nombre = $request->nombre;
+        $personal->apellido1 = $request->apellido1;
+        $personal->apellido2 = $request->apellido2;
+        $personal->telefono = $request->telefono;
+        $personal->correo = $request->correo;
+        $personal->direccion = $request->direccion;
+        $personal->ciudad = $request->ciudad;
+        $personal->id_doctor = $request->iddoctor;
+        $personal->Password = Hash::make($request->pwd);
+
+        return $personal*/
     }
 
     /**

@@ -10,4 +10,10 @@ class Administradore extends Model
     use HasFactory;
 
     protected $table = "administradores";
+
+    //relacion de uno a muchos
+    public function personales()
+    {
+        return $this->hasMany('app\Model\Personal');
+    }
 }

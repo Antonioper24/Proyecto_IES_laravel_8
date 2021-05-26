@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Administradore;
+use CreateAdministradoresTable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use PhpParser\Node\Stmt\Return_;
 
 class AdministradorController extends Controller
 {
@@ -11,9 +16,20 @@ class AdministradorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function login(Request $request){
+
+        $usuarios = DB::table('administradores')->where('id_admin',$request->user)->first();
+
+        if(Hash::check($request->pwd, $usuarios->password)){
+            return view('administrador.initadministrador');
+        }
+        else {
+            return back()->withInput();
+        }
+    }
     public function index()
     {
-       return view('administrador.initadministrador');
+        return view('administrador.initadministrador');
     }
 
     /**
@@ -34,7 +50,25 @@ class AdministradorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //return $request->all();
+
+        $administrador = new Administradore();
+
+        $administrador->id_admin = $request->idadmin;
+        $administrador->nombre = $request->nombre;
+        $administrador->apellido1 = $request->apellido1;
+        $administrador->apellido2 = $request->apellido2;
+        $administrador->telefono = $request->telefono;
+        $administrador->correo = $request->correo;
+        $administrador->direccion = $request->direccion;
+        $administrador->ciudad = $request->ciudad;
+        $administrador->password = Hash::make($request->pwd);
+
+        //return $administrador;
+        
+        $administrador->save();
+        
+        return view('administrador.comprobacion');
     }
 
     /**

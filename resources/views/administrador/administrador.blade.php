@@ -93,7 +93,7 @@ label {
                 		<br>
                 		<br>
                 		<h2> INICIA SESION CON TUS CREDENCIALES</h2><br>
-                		<form method="POST" action="{{ route('autorizacion') }}">
+                		<form method="POST" action="{{ route('administrador.login') }}">
                         		@csrf
                         		<label>Usuario</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         		<input type="text" name="user" id="user" required class="texto">

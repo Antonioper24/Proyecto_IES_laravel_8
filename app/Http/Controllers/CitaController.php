@@ -34,7 +34,20 @@ class CitaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+     //validacion de formulario
+     /*
+        $request->validate([
+            'idadmin' => 'required',
+            'nombre' => 'required',
+            'apellido1' => 'required',
+            'apellido2' => 'required',
+            'telefono' => 'required',
+            'correo' => 'required',
+            'direccion' => 'required',
+            'ciudad' => 'required',
+            'pwd' => 'required'
+        ]);
+        //*/
     }
 
     /**
