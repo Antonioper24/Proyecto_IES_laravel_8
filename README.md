@@ -9,4 +9,6 @@
 
 5.php artisan migrate
 
+5.1 Use the data found in the datos.sql file if you wish
+ 
 6.php artisan serve
