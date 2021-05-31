@@ -33,7 +33,7 @@
             .formu {
                 margin-left: 240px;
                 width: 918px;
-                height: 660px;
+                height: 750px;
                 background: url(https://thumbs.dreamstime.com/z/marco-abstracto-colorido-con-las-manchas-blancas-negras-del-chapoteo-27015616.jpg);
                 opacity: 0.79;
             }
@@ -82,6 +82,13 @@
 
             .seleccion {
                 margin-left: 220px;
+                padding-right: 25px;
+                height: 25px;
+                border-color: blue;
+            }
+
+            .seleccion1 {
+                margin-left: 30px;
                 padding-right: 25px;
                 height: 25px;
                 border-color: blue;
@@ -152,6 +159,15 @@
                 <br>
                 <label for="pwd">Contrase&ntilde;a<label>&nbsp;&nbsp;&nbsp;
                 <input class="texto4"  type="password" name="pwd" id="pwd" required>
+                <br>
+                <br>
+                <label for="idadmin">Nom. Responsable<label>&nbsp;
+                <select class="seleccion1" name="idadmin" id="idadmin" required>
+                    <option></option>
+                    @foreach($nombre as $apellido)
+                        <option value="{{ $apellido->id_admin }}">{{$apellido->apellido1}},{{$apellido->nombre}}</option>
+                    @endforeach
+                </select>
                 <br>
                 <br>
                 <input class="envio" type="submit" name="enviar" value="enviar"></button>

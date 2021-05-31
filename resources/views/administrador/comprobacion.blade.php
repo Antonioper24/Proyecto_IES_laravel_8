@@ -47,8 +47,10 @@ img {
 
 button {
     margin-left: 550px ;
+    color: white;
     border-color: black;
- background-color: rgb(255, 0, 0);
+    background-color: rgb(255, 0, 0);
+    height: 25px;
     
 }
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use App\Models\Personal;
+
 class ClienteController extends Controller
 {
     /**
@@ -13,7 +15,9 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
+        $nombre = Personal::all();
+
+         return view('administrador.formularioCli', compact('nombre'));
     }
 
     /**
@@ -34,9 +38,9 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+       // return $request;
 
-        /*
+    
         $cliente = new Cliente();
 
         $cliente->num_expe = $request->expediente;
@@ -47,9 +51,14 @@ class ClienteController extends Controller
         $cliente->DNI = $request->dni;
         $cliente->direccion = $request->direccion;
         $cliente->ciudad = $request->ciudad;
+        $cliente->id_personal = $request->doctor; 
 
-        return $cliente;
-        */
+        //return $cliente;
+
+        $cliente->save();
+
+        return view('administrador.comprobacion');
+        
     }
 
     /**

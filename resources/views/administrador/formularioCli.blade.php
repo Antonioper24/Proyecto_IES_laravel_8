@@ -33,7 +33,7 @@
             .formu {
                 margin-left: 240px;
                 width: 918px;
-                height: 560px;
+                height: 600px;
                 background: url(https://previews.123rf.com/images/barbaliss/barbaliss1210/barbaliss121000018/15690786-marco-con-manchas-de-color-aisladas-sobre-fondo-blanco-ilustraci%C3%B3n-.jpg);
                 opacity: 0.82;
             }
@@ -71,6 +71,13 @@
 
             .seleccion {
                 margin-left: 220px;
+                padding-right: 25px;
+                height: 25px;
+                border-color: tomato;
+            }
+
+            .seleccion1 {
+                margin-left: 123px;
                 padding-right: 25px;
                 height: 25px;
                 border-color: tomato;
@@ -135,7 +142,16 @@
                 </select>
                 <br>
                 <br>
-                <input class="envio" type="submit" name="enviar" value="enviar"></button>
+                <label for="doctor">NOM. DOCTOR/A</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <select class="seleccion1" name="doctor" id="doctor" required>
+                        <option></option>
+                        @foreach ($nombre as $apellido)
+                            <option value="{{$apellido->id_personal}}">{{$apellido->apellido1}},{{$apellido->nombre}}</option>
+                        @endforeach
+                </select>
+                <br>
+                <br>
+                <input class="envio" type="submit" name="enviar" value="enviar">
             </form>
         </blockquote>
     </body>

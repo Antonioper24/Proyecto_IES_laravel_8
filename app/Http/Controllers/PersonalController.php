@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Administradore;
 use App\Models\Personal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class PersonalController extends Controller
@@ -13,9 +15,16 @@ class PersonalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function login()
     {
         return view('personal.initdoctor');
+    }
+
+    public function index(){
+
+        $nombre = Administradore::all();
+
+        return view('administrador.formdoctore', compact('nombre'));
     }
 
     /**
@@ -36,8 +45,8 @@ class PersonalController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
-        /*
+        //return $request;
+ 
         $personal = new Personal();
 
         $personal->id_personal = $request->idperson;
@@ -50,8 +59,13 @@ class PersonalController extends Controller
         $personal->ciudad = $request->ciudad;
         $personal->id_doctor = $request->iddoctor;
         $personal->Password = Hash::make($request->pwd);
+        $personal->id_admin = $request->idadmin;
 
-        return $personal*/
+        //return $personal
+
+        $personal->save();
+
+        return view('administrador.comprobacion');
     }
 
     /**

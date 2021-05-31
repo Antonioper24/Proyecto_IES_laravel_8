@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Administradore;
-use CreateAdministradoresTable;
+use App\Models\Personal;
+use App\Models\Cliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use PhpParser\Node\Stmt\ElseIf_;
 use PhpParser\Node\Stmt\Return_;
 
 class AdministradorController extends Controller
@@ -88,10 +90,26 @@ class AdministradorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
-    }
+        //return $request
+
+        $request->validate([
+            'tipo' => 'required',
+            'personas' => 'required',
+            'base' => 'required'
+        ]);
+
+        $var = $request->base;
+        $persons = DB::table($request->tipo)->where($var,$request->personas)->first();
+        if($persons->$var === $request->personas){
+            return view('administrador.actualizaciones', ['person'=>$persons, 'tipos'=>$request->tipo]);
+         }
+         else {
+             return back()->withInput();
+ 
+         }
+     }
 
     /**
      * Update the specified resource in storage.

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\AdministradorController;
+use App\Http\Controllers\ClienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,13 +60,9 @@ Route::post('/administrador/insertar/personal', [PersonalController::class, 'sto
 Route::post('/administrador/comprobaciones', [AdministradorController::class, 'index'])->name('administrador.index');
 
 /* altas */
-Route::get('/adminstrador/formulariocli', function () {
-    return view('administrador.formularioCli');
-})->name('formcliente');
+Route::get('/administrador/formulariocli',[ClienteController::class, 'index'] )->name('cliente.index');
 
-Route::get('/adminstrador/formulariodoc', function () {
-    return view('administrador.formdoctore');
-})->name('formdoctor');
+Route::get('/administrador/formulariodoc', [PersonalController::class, 'index'])->name('personal.index');
 
 Route::get('/adminstrador/formularioadmin', function () {
     return view('administrador.formadmin');
@@ -76,6 +73,8 @@ Route::get('/adminstrador/formularioadmin', function () {
 Route::get('/administrador/actualizaciones', function () {
     return view('administrador.update');
 })->name('update');
+
+Route::post('/administador/edit', [AdministradorController::class, 'edit'])->name('administrador.edit');
 
 /* borrado*/
 Route::get('/administrador/borrado', function () {

@@ -89,8 +89,8 @@ img {
               <li class="dropdown">
                       <p>Altas</p>
                       <div class="dropdown-content">
-                                <a href="{{ route('formcliente') }}">Clientes</a>
-                                <a href="{{ route('formdoctor') }}">Doctores</a>
+                                <a href="{{ route('cliente.index') }}">Clientes</a>
+                                <a href="{{ route('personal.index') }}">Doctores</a>
                                 <a href="{{ route('formadmin') }}">Administradores</a>
                       </div>
               </li>

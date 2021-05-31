@@ -33,7 +33,7 @@
             .formu {
                 margin-left: 240px;
                 width: 918px;
-                height: 590px;
+                height: 650px;
                 background: url(https://thumbs.dreamstime.com/b/marco-horizontal-de-las-ramas-de-%C3%A1rbol-de-abeto-para-la-tarjeta-de-navidad-79968468.jpg);
                 opacity: 0.79;
             }
