@@ -76,6 +76,14 @@ Route::get('/administrador/actualizaciones', function () {
 
 Route::post('/administador/edit', [AdministradorController::class, 'edit'])->name('administrador.edit');
 
+Route::put('/administrador/update/administrador', [AdministradorController::class, 'update'])->name('administrador.update');
+
+Route::put('/administrador/update/personal', [PersonalController::class, 'update'])->name('personal.update');
+
+Route::put('/administrador/update/cliente', [ClienteController::class, 'update'])->name('cliente.update');
+
+Route::post('/logout', [AdministradorController::class, 'logout'])->name('administrador.logout');
+
 /* borrado*/
 Route::get('/administrador/borrado', function () {
     return view('administrador.delete');

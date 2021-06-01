@@ -15,3 +15,8 @@ $administrador->correo = "marioper24@gmail.com"
 $administrador->direccion = "AVD. HYTASA, 50"
 $administrador->ciudad = "Barcelona"
 $administrador->password = Hash::make("MRfernan.29");
+$administrador->save();
+
+3. podemos consultar los datos utilizando lo siguiente:
+
+Administradore::all()

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Personal;
+use Illuminate\Support\Facades\DB;
 
 class ClienteController extends Controller
 {
@@ -90,9 +91,25 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $tablas = Cliente::find($request->expediente);
+
+
+        $tablas->num_expe = $request->expediente;
+        $tablas->nombre = $request->nombre;
+        $tablas->apellido1 = $request->apellido1;
+        $tablas->apellido2 = $request->apellido2;
+        $tablas->telefono = $request->telefono;
+        $tablas->DNI = $request->dni;
+        $tablas->direccion = $request->direccion;
+        $tablas->ciudad = $request->ciudad;
+        $tablas->id_personal = $request->doctor; 
+        
+        //return $tablas;
+        $tablas->save();
+
+        return view('administrador.resolucion');
     }
 
     /**

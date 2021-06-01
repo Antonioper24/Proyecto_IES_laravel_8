@@ -110,8 +110,10 @@
         <br>
         @if ($tipos === 'personal')
         <blockquote class="formu">
-            <form action="{{ route('personal.store') }}" method="POST">
-                @csrf
+            <form action="{{ route('personal.update')}}" method="POST">
+            @csrf
+
+            @method('put')
                 <br>
                 <br>
                 <label for="idperson">ID. personal</label>
@@ -143,7 +145,7 @@
                 <br>
                 <br>
                 <label for="ciudad">Ciudad</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="titulo4" type="text" name="direccion" value="{{$person->ciudad}}"  required>
+                <input class="titulo4" type="text" name="ciudad" value="{{$person->ciudad}}"  required>
                 <br>
                 <br>
                 <label for="iddoctor">ID Doctor</label>&nbsp;&nbsp;
@@ -164,8 +166,10 @@
 
         @elseif ($tipos === 'clientes')
         <blockquote class="formu">
-            <form action="{{ route('cliente.store') }} " method="POST">
-                @csrf
+            <form action="{{route('cliente.update')}} "  method="POST">
+            @csrf
+
+            @method('put')
                 <br>
                 <br>
                 <label for="expediente">Num. Expediente</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -210,8 +214,10 @@
 
         @else
        <blockquote class="formu">
-            <form action="{{ route('administrador.store') }}" method="POST">
-                @csrf
+            <form action="{{ route('administrador.update') }}" method="POST">
+            @csrf
+
+            @method('put')
                 <br>
                 <br>
                 <label for="idadmin">ID. administrador</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

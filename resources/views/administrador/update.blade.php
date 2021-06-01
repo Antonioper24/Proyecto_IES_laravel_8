@@ -28,8 +28,17 @@
                 font-size: 58px;
                 text-shadow: 2px 2px 5px red;
                 
-            }  
-
+            } 
+             
+            blockquote {
+                width: 1450px;
+                height: 620px;
+            }
+            img {
+                    margin-left: 150px;
+                    width: 1130px;
+                    height: 550px;
+            }
        </style>
     </head>
     <body>
@@ -41,5 +50,13 @@
         <div>
             @include('administrador.buscador')
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <blockquote>
+            <img src="https://wishesdb.com/wp-content/uploads/2020/12/Calendario-junio-2021-Spain-calendario-de-escritorio-wishesdb.jpg">
+        </blockquote>
+    </body>
     </body>
 <html>

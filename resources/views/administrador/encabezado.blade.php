@@ -80,6 +80,16 @@ img {
         height: 75px;
 }
 
+input {
+  font-family: 'Muli', sans-serif;
+  font-size: 17.5px;
+  line-height: 20px;
+  color: white;
+  background-color: rgba(63, 63, 66, 0.925);
+  border: 0;
+  outline: none;
+}
+
    </style>
    <body>
       <header id="encabezado">
@@ -97,7 +107,12 @@ img {
               <li> <a href="{{ route('update') }}">Actualizar</a></li>
               <li><a href="{{ route('delete') }}">Bajas</a></li>
               <li><a  href="{{ route('revision') }}">Consultas</a></li>
-              <li><a  href="{{ route('cerrar') }}">Cerrar Sessi&oacute;n</a></li>
+              <li>
+                <form action="{{ route('administrador.logout') }}" method="POST">
+                  @csrf  
+                  <input type="submit" name="cerrar sesion">
+                </form>
+              </li>
             </ul>
           </nav>
       </header>

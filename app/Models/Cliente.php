@@ -11,6 +11,24 @@ class Cliente extends Model
 
     protected $table = "clientes";
 
+    protected $primaryKey = 'num_expe';
+
+    public $incrementing = false;
+
+    protected $keyType = 'string';
+
+    protected $fillable = [
+       'num_expe',
+        'nombre',
+        'apellido1',
+        'apellido2',
+        'telefono',
+        'DNI',
+        'direccion',
+        'ciudad',
+        'id_personal',
+    ];
+
     // Relacion de uno a muchos
 
     public function personal(){

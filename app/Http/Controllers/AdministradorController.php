@@ -6,6 +6,7 @@ use App\Models\Administradore;
 use App\Models\Personal;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use PhpParser\Node\Stmt\ElseIf_;
@@ -118,9 +119,25 @@ class AdministradorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $datos = Administradore::find($request->idadmin);   
+        
+        $datos->id_admin = $request->idadmin;
+        $datos->nombre = $request->nombre;
+        $datos->apellido1 = $request->apellido1;
+        $datos->apellido2 = $request->apellido2;
+        $datos->telefono = $request->telefono;
+        $datos->correo = $request->correo;
+        $datos->direccion = $request->direccion;
+        $datos->ciudad = $request->ciudad;
+        $datos->password = Hash::make($request->pwd);
+
+        //return $datos;
+
+        $datos->save();
+
+        return view('administrador.resolucion');
     }
 
     /**
@@ -132,5 +149,16 @@ class AdministradorController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+    
+        $request->session()->invalidate();
+    
+        $request->session()->regenerateToken();
+    
+        return view('administrador.administrador');
     }
 }

@@ -97,9 +97,27 @@ class PersonalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $datos = Personal::find($request->idperson);
+
+        $datos->id_personal = $request->idperson;
+        $datos->nombre = $request->nombre;
+        $datos->apellido1 = $request->apellido1;
+        $datos->apellido2 = $request->apellido2;
+        $datos->telefono = $request->telefono;
+        $datos->correo = $request->correo;
+        $datos->direccion = $request->direccion;
+        $datos->ciudad = $request->ciudad;
+        $datos->id_doctor = $request->iddoctor;
+        $datos->Password = Hash::make($request->pwd);
+        $datos->id_admin = $request->idadmin;
+
+        //return $datos;
+        
+        $datos->save();
+        
+        return view('administrador.resolucion');
     }
 
     /**
