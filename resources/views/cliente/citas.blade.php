@@ -104,7 +104,7 @@ input {
         	<br>
         	<div>
 		      <blockquote class="formu">
-            		<form action="falla" method="POST">
+            		<form action="{{ route('contacto.store')}}" method="POST">
                 	@csrf
                 		<br>
                 		<br>
@@ -131,7 +131,7 @@ input {
                 		<br>
                 		<br>
                 		<label for="correo">Correo Electr&oacute;nico</label>&nbsp;
-                		<input class="texto1" type="email" name="correo" id="correo" placeholder="opcional">
+                		<input class="texto1" type="email" name="correo" id="correo" placeholder="tu correo">
                 		<br>
                 		<br>
                 		<input class="envio" type="submit" name="Enviar" value="enviar">

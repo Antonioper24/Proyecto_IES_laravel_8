@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\ContactoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,7 @@ use App\Http\Controllers\ClienteController;
 /* nuestro route de inicio(Home)*/
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 /* Aparatado para la zona clientes*/
 Route::get('/cliente', function () {
@@ -89,6 +90,14 @@ Route::get('/administrador/borrado', function () {
     return view('administrador.delete');
 })->name('delete');
 
+/* routa de consultas por administrador*/
+Route::get('/administrador/consultas/citas', [ContactoController::class, 'index'])->name('contacto.index');
+
+Route::get('/administrador/consultas/clientes', [ClienteController::class, 'show'])->name('cliente.show');
+
+Route::put('/administrador/update/citas', [ContactoController::class, 'update'])->name('contacto.update');
+
+
 /* route de la nuestros contactos*/
 Route::get('/contacto', function () {
     return view('consulta.contactos');
@@ -98,6 +107,8 @@ Route::get('/contacto', function () {
 Route::get('/citas', function () {
     return view('cliente.citas');
 })->name('citas');
+
+Route::post('/citas/solicitud', [ContactoController::class, 'store'])->name('contacto.store');
 
 /* route de nuestras tratamientos*/
 Route::get('/Endodoncia', function () {

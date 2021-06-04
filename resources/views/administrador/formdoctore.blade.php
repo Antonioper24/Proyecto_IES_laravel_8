@@ -117,7 +117,7 @@
                 <br>
                 <br>
                 <label for="idperson">ID. personal</label>
-                <input class="texto5"  type="text" name="idperson" id="idperson" required>
+                <input class="texto5"  type="text" name="idperson" id="idperson" placeholder="DOC o REC" required>
                 <br>
                 <br>
                 <label for="nombre">Nombre</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -80,7 +80,7 @@ img {
         height: 75px;
 }
 
-input {
+button {
   font-family: 'Muli', sans-serif;
   font-size: 17.5px;
   line-height: 20px;
@@ -105,12 +105,17 @@ input {
                       </div>
               </li>
               <li> <a href="{{ route('update') }}">Actualizar</a></li>
-              <li><a href="{{ route('delete') }}">Bajas</a></li>
-              <li><a  href="{{ route('revision') }}">Consultas</a></li>
+              <li class="dropdown">
+                <p>Consultas</p>
+                <div class="dropdown-content">
+                  <a  href="{{ route('contacto.index') }}">Citas</a>
+                  <a href="{{ route('cliente.show') }}">Clientes</a>
+                </div>
+              </li>
               <li>
                 <form action="{{ route('administrador.logout') }}" method="POST">
                   @csrf  
-                  <input type="submit" name="cerrar sesion">
+                  <button type="submit" >Cerrar Sessi&oacute;n</button>
                 </form>
               </li>
             </ul>

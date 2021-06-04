@@ -10,4 +10,16 @@ class Contacto extends Model
     use HasFactory;
 
     protected $table = "contactos";
+
+    protected $fillable = [
+        'nombre',
+        'apellido',
+        'telefono',
+        'ciudad',
+        'correo'
+    ];
+
+    protected $hidden = [
+        '_token'
+    ];
 }

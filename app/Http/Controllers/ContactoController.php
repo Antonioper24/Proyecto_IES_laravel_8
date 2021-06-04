@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contacto;
 use Illuminate\Http\Request;
 
 class ContactoController extends Controller
@@ -13,7 +14,9 @@ class ContactoController extends Controller
      */
     public function index()
     {
-        //
+        $datos = Contacto::all();
+        //return $datos;
+        return view('cliente.consulcita', compact('datos'));
     }
 
     /**
@@ -34,7 +37,23 @@ class ContactoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'telefono' => 'required',
+            'ciudad' => 'required',
+        ]);
+        
+        $contacto = new Contacto();
+        $contacto->nombre = $request->nombre;
+        $contacto->apellido = $request->apellido;
+        $contacto->telefono = $request->telefono;
+        $contacto->ciudad = $request->ciudad;
+        $contacto->correo = $request->correo;
+        
+        $contacto->save();
+
+        return view('cliente.comprobacion');
     }
 
     /**
@@ -66,9 +85,30 @@ class ContactoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'id' => 'required',
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'telefono' => 'required',
+            'ciudad' => 'required',
+            'cita' => 'required'
+        ]);
+
+        $alta = Contacto::find($request->id);
+
+        $alta->id = $request->id;
+        $alta->nombre = $request->nombre;
+        $alta->apellido = $request->apellido;
+        $alta->telefono = $request->telefono;
+        $alta->ciudad = $request->ciudad;
+        $alta->correo = $request->correo;
+        $alta->cita = $request->cita;
+
+        $alta->save();
+
+        return redirect()->route('contacto.index');
     }
 
     /**

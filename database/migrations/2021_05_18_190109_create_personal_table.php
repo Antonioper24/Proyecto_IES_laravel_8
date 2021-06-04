@@ -19,7 +19,7 @@ class CreatePersonalTable extends Migration
             $table->string('apellido1',20);
             $table->string('apellido2',20);
             $table->char('telefono',9);
-            $table->string('correo',75)->nullable();
+            $table->string('correo',75);
             $table->string('direccion',80);
             $table->string('ciudad',40);
             $table->string('id_doctor',10)->unique();

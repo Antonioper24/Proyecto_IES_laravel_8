@@ -18,8 +18,8 @@ class CreateCitasTable extends Migration
             $table->char('num_radiogra',12);
             $table->string('tratamiento',40);
             $table->text('descripcion');
-            $table->decimal('precio',$precision = 5,$scale = 2);
-            $table->date('fecha');
+            $table->decimal('precio',$precision = 5,$scale = 2)->nullable();
+            $table->date('fecha')->nullable();
             $table->char('num_expe',12);
             $table->timestamps();
             $table->unique('id_cita');
