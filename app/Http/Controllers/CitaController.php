@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cita;
+use App\Models\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CitaController extends Controller
 {
@@ -13,7 +16,7 @@ class CitaController extends Controller
      */
     public function index()
     {
-        //
+        return view('personal.initdoctor');
     }
 
     /**
@@ -23,9 +26,43 @@ class CitaController extends Controller
      */
     public function create()
     {
-        //
+        return view('personal.initpersonal');
     }
 
+    public function buscador(Request $request){
+        $datos = Cliente::find($request->expediente);
+
+        $data = DB::table('citas')->where('num_expe', '=', $datos->num_expe)->first();;
+
+        //return $data;
+        return view('personal.citanueva', ['busca' => $datos, 'cita' => $data]);
+    }
+
+    public function mostrar(){
+        $datos = Cliente::all();
+
+        $G = [];
+        foreach ($datos as $nombre){                             
+        $data = Cita::all()->where('num_expe', '=', $nombre->num_expe);
+        
+        $G[$nombre->num_expe] = $data;
+        }
+
+        return view('personal.visualizacion', ['busca' => $datos, 'cita' => $G]);
+    }
+
+    public function visita(){
+        $datos = Cliente::all();
+
+        $G = [];
+        foreach ($datos as $nombre){                             
+        $data = Cita::all()->where('num_expe', '=', $nombre->num_expe);
+        
+        $G[$nombre->num_expe] = $data;
+        }
+
+        return view('personal.actualizar', ['busca' => $datos, 'cita' => $G]);
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -34,20 +71,16 @@ class CitaController extends Controller
      */
     public function store(Request $request)
     {
-     //validacion de formulario
-     /*
-        $request->validate([
-            'idadmin' => 'required',
-            'nombre' => 'required',
-            'apellido1' => 'required',
-            'apellido2' => 'required',
-            'telefono' => 'required',
-            'correo' => 'required',
-            'direccion' => 'required',
-            'ciudad' => 'required',
-            'pwd' => 'required'
-        ]);
-        //*/
+        $data = new Cita();
+
+        $data->num_radiogra = $request->radio;
+        $data->tratamiento = $request->tratami;
+        $data->descripcion = $request->descripcion;
+        $data->num_expe = $request->id;
+        
+        $data->save();
+
+        return view('personal.comprobacion');
     }
 
     /**
@@ -56,9 +89,11 @@ class CitaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $datos = Cliente::find($request->id);
+
+        return view('personal.cita', compact('datos'));
     }
 
     /**
@@ -67,9 +102,17 @@ class CitaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $datos = Cita::find($request->numero);
+
+        $datos->num_radiogra = $request->radio;
+        $datos->tratamiento = $request->tratami;
+        $datos->descripcion = $request->descripcion;
+        $datos->num_expe = $request->id;
+
+        $datos->save();
+        return view('personal.comprobacion');
     }
 
     /**
@@ -79,9 +122,23 @@ class CitaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $datos = Cita::find($request->id);
+
+        $datos->num_radiogra = $datos->num_radiogra;
+        $datos->tratamiento =  $datos->tratamiento;
+        $datos->descripcion = $datos->descripcion;
+        $datos->fecha = $request->fecha;
+        $datos->hora = $request->hora;
+        $datos->cita = $request->cita;
+        $datos->num_expe = $request->expediente;
+
+        //return $datos;
+
+        $datos->save();
+
+        return redirect()->route('cita.visita');
     }
 
     /**

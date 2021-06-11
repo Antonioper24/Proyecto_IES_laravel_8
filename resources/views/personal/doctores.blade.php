@@ -68,6 +68,14 @@ label {
   background-color: rgba(61, 226, 135, 0.925);
 }
 
+.regresar {
+	margin-top: 150px;
+    background-image: linear-gradient(red, yellow, red);
+    margin-left: 550px;
+    width: 205px;
+    height: 35px;
+}
+
 	</style>
 	</head>
 	<body>
@@ -93,10 +101,10 @@ label {
                 		<br>
                 		<br>
                 		<h2> INICIA SESION CON TUS CREDENCIALES</h2><br>
-                		<form method="POST" action="{{ route('credenciales') }}">
+                		<form method="POST" action="{{ route('personal.login') }}">
                         		@csrf
                         		<label>Usuario</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        		<input type="text" name="user" id="user" required class="texto">
+                        		<input type="text" name="user" id="user" required class="texto" maxlength="14">
                         		<br>
                         		<br>
                         		<label>Contrase&ntilde;a</label>&nbsp;&nbsp;&nbsp;
@@ -107,5 +115,12 @@ label {
                 		</form>
             		</div>
         	</div>
+			<br>
+			<br>
+			<br>
+			<br>
+			<form action="{{ route('index') }}" method="GET">
+					<button class="regresar">Volver a inicio</button>
+			</form>
 	</body>
 </html>

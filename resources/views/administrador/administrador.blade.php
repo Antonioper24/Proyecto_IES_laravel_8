@@ -68,6 +68,14 @@ label {
   background-color: rgba(61, 226, 135, 0.925);
 }
 
+.regresar {
+	margin-top: 150px;
+    background-image: linear-gradient(red, yellow, red);
+    margin-left: 550px;
+    width: 205px;
+    height: 35px;
+}
+
 	</style>
 	</head>
 	<body>
@@ -96,16 +104,22 @@ label {
                 		<form method="POST" action="{{ route('administrador.login') }}">
                         		@csrf
                         		<label>Usuario</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        		<input type="text" name="user" id="user" required class="texto">
+                        		<input type="text" name="user" id="user" required maxlength="14" class="texto">
                         		<br>
                         		<br>
                         		<label>Contrase&ntilde;a</label>&nbsp;&nbsp;&nbsp;
                         		<input type="password" name="pwd" id="pwd" required class="texto">
                         		<br>
                         		<br>
-                        		<input id="enter" type="submit" name="Enviar" value="Enviar">
+                        		<button id="enter" type="submit">Iniciar Sesi&oacute;n</button>
                 		</form>
             		</div>
         	</div>
-	</body>
+			<br>
+			<br>
+			<br>
+			<br>
+			<form action="{{ route('index') }}" method="GET">
+					<button class="regresar">Volver a inicio</button>
+			</form>
 </html>

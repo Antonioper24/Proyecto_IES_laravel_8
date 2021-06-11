@@ -26,6 +26,8 @@ class Cliente extends Model
         'DNI',
         'direccion',
         'ciudad',
+        'num_radiogra',
+        'tratamiento',
         'id_personal',
     ];
 
@@ -37,5 +39,9 @@ class Cliente extends Model
 
     public function citas(){
         return $this->hasMany('app\Models\Cita');
+    }
+
+    public function tratamiento(){
+        return $this->hasMany('app\Models\Tratamiento');
     }
 }

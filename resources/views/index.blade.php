@@ -79,6 +79,13 @@ li.dropdown {
   display: block;
 }
 
+a {
+	color:black;
+}
+
+h2 {
+	color: brown;
+}
 #cuerpo1{
         background: url(../imagen/imagenes.png);
         width: 1428px;
@@ -197,8 +204,9 @@ blockquote{
               	<ul>
                     <li><a href="{{ route('clientes') }}">Zona Cliente</a></li>
                     <li class="dropdown">
-					<a  href="{{ route('doctores') }}" class="dropbtn">Zona Doctores</a>
+						<a>Zona Doctores</a>
 					<div class="dropdown-content">
+						<a  href="{{ route('doctores') }}">Personal</a>
 						<a href="{{ route('administrador') }}">Administrador</a>
 					</div>
 		    		</li>
@@ -369,13 +377,13 @@ blockquote{
         <br>
         <div id="piefun">
         	<h4 class="pie">Siguenos en nuestras redes sociales</h4>&nbsp;&nbsp;&nbsp;
-        	<a id="pie1" href="https://www.brandandhealth.com/facebook-para-clinicas-dentales/">
+        	<a id="pie1" href="https://www.facebook.com/clinicafriedlanderbcn/">
 			<img src="imagen/Facebook.png">
 		</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<a  id="pie2" href="">
+		<a  id="pie2" href="https://twitter.com/clinicaqboca">
 			<img src="imagen/twitter.png">
 		</a>&nbsp;&nbsp;&nbsp;
-		<a id="pie3" href="">
+		<a id="pie3" href="https://es-es.facebook.com/clinicas.dentales.716">
 			<img src="imagen/Instagram.png">
 		</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<p class="pie1"><em>

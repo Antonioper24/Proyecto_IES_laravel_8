@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-       <title>Consulta Personal</title>
+       <title>Visualizaci&oacute;n de Costes</title>
        <meta charset="utf-8">
    </head>
    <style>
@@ -32,8 +32,8 @@ h2{
 }
 
 table { 
-    margin-left: 30px;
-    width: 1320px;
+    margin-left: 240px;
+    width: 990px;
     border: 1px solid white;
 }
 
@@ -65,7 +65,7 @@ td {
 }
 
 .input1 {
-    width: 215px;
+    width: 175px;
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 15px;
@@ -75,16 +75,6 @@ td {
     
 }
 
-select {
-    width: 150px;
-    height: 29.50px;
-    background-color: #008CBA;
-}
-
-option {
-    background-color: #008CBA;
-    color: white;
-}
 
 .regresar {
     background-image: linear-gradient(red, yellow, red);
@@ -96,32 +86,22 @@ option {
    </style> 
     <body>
         <div>
-         <h2>NUESTRO PERSONAL</h2>
+         <h2>Coste Del Tratamiento</h2>
         </div>
         <br>
         <br>
         <br>
         <table>
             <tr>
-                <th>ID</th>
-                <th>NOMBRE</th>
-                <th>APELLIDOS</th>
-                <th>TELEFONO</th>
-                <th>CIUDAD</th>
-                <th>CORREO ELECTR&Oacute;NICO</th>
-                <th>DIRECCI&Oacute;N</th>
-                <th>TI. PERSONAL</th>
+                <th>IDENTIFICADOR</th>
+                <th>TRATAMIENTO</th>
+                <th>COSTE</th>
             </tr>
                 @foreach($datos as $data)
             <tr>
-                    <td class="input">{{$data->id_personal}}</td>
-                    <td class="input">{{$data->nombre}}</td>
-                    <td class="input1">{{$data->apellido1}} {{$data->apellido2}}</td>
-                    <td class="input">{{$data->telefono}}</td>
-                    <td class="input">{{$data->ciudad}}</td>
-                    <td class="input1">{{$data->correo}}</td>
-                    <td class="input1">{{$data->direccion}}</td>
-                    <td class="input">{{$data->personal}}</td>
+                    <td class="input">{{$data->num_expe}}</td>
+                    <td class="input">{{$data->tratamiento}}</td>
+                    <td class="input1">{{$data->precio}} €</td>
             </tr>
                 @endforeach
         </table>
@@ -129,9 +109,8 @@ option {
         <br>
         <br>
         <br>
-        <form action="{{ route('administrador.index') }}" method="POST">
-        @csrf
-                <button class="regresar">Volver a la pagina de inicio</button>
+        <form action="{{ route('cliente.show') }}" method="GET">
+                <button class="regresar">Volver a la pagina de clientes</button>
         </form>
         
 

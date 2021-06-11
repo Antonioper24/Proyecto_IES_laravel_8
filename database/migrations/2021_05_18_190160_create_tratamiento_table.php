@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCitasTable extends Migration
+class CreateTratamientoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateCitasTable extends Migration
      */
     public function up()
     {
-        Schema::create('citas', function (Blueprint $table) {
+        Schema::create('tratamiento', function (Blueprint $table) {
             $table->id();
-            $table->string('num_radiogra',12);
             $table->string('tratamiento',40);
-            $table->text('descripcion');
-            $table->date('fecha')->nullable();
-            $table->string('hora',5)->nullable();
-            $table->string('cita',20)->nullable();
+            $table->decimal('precio',$precision = 5,$scale = 2);
             $table->char('num_expe',12);
             $table->timestamps();
 	    //$table->foreignId('num_expe')->constrained('cliente');
@@ -35,6 +31,6 @@ class CreateCitasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('citas');
+        Schema::dropIfExists('tratamiento');
     }
 }

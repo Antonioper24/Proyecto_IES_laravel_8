@@ -144,13 +144,13 @@ input {
         	<br>
         	<div id="piefun">
             		<h4 class="pie">Siguenos en nuestras redes sociales</h4>&nbsp;&nbsp;&nbsp;
-            		<a id="pie1" href="https://www.brandandhealth.com/facebook-para-clinicas-dentales/">
+            		<a id="pie1" href="https://www.facebook.com/clinicafriedlanderbcn/">
                     	<img src="imagen/Facebook.png">
             		</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            		<a  id="pie2" href="">
+            		<a  id="pie2" href="https://twitter.com/clinicaqboca">
                     	<img src="imagen/twitter.png">
             		</a>&nbsp;&nbsp;&nbsp;
-            		<a id="pie3" href="">
+            		<a id="pie3" href="https://es-es.facebook.com/clinicas.dentales.716">
                     	<img src="imagen/Instagram.png">
             		</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             		<p class="pie1"><em>

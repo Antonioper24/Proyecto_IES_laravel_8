@@ -93,7 +93,9 @@ class ContactoController extends Controller
             'apellido' => 'required',
             'telefono' => 'required',
             'ciudad' => 'required',
-            'cita' => 'required'
+            'cita' => 'required',
+            'fecha' => 'required',
+            'hora' => 'required',
         ]);
 
         $alta = Contacto::find($request->id);
@@ -105,6 +107,8 @@ class ContactoController extends Controller
         $alta->ciudad = $request->ciudad;
         $alta->correo = $request->correo;
         $alta->cita = $request->cita;
+        $alta->fecha = $request->fecha;
+        $alta->hora = $request->hora;
 
         $alta->save();
 

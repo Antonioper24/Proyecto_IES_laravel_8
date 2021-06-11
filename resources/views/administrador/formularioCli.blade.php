@@ -33,7 +33,7 @@
             .formu {
                 margin-left: 240px;
                 width: 918px;
-                height: 600px;
+                height: 780px;
                 background: url(https://previews.123rf.com/images/barbaliss/barbaliss1210/barbaliss121000018/15690786-marco-con-manchas-de-color-aisladas-sobre-fondo-blanco-ilustraci%C3%B3n-.jpg);
                 opacity: 0.82;
             }
@@ -87,7 +87,7 @@
                 margin-left: 789px;
                 border-color: brown;
                 background-color: rgba(63, 63, 66, 0.925);
-                width: 70px;
+                width: 95px;
                 height: 32px;
                 color: white;
             }        
@@ -106,7 +106,7 @@
                 <br>
                 <br>
                 <label for="expediente">Num. Expediente</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="texto"  type="text" name="expediente" id="expediente" required>
+                <input class="texto"  type="text" name="expediente" id="expediente" maxlength="12" required>
                 <br>
                 <br>
                 <label for="nombre">Nombre</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -122,11 +122,11 @@
                 <br>
                 <br>
                 <label for="telefono">Tel&eacute;fono</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="texto1"  type="tel" name="telefono" id="telefono" required>
+                <input class="texto1"  type="tel" name="telefono" id="telefono" maxlength="9" required>
                 <br>
                 <br>
                 <label for="dni">DNI</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="texto2"  type="text" name="dni" id="dni" required>
+                <input class="texto2"  type="text" name="dni" id="dni" maxlength="9" required>
                 <br>
                 <br>
                 <label for="direccion">Direcci&oacute;n</label>&nbsp;&nbsp;&nbsp;
@@ -142,6 +142,22 @@
                 </select>
                 <br>
                 <br>
+                <label for="tratami">Tratamiento</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <select class="seleccion1" name="tratami" id="tratami" required>
+                        <option></option>
+                        <option value="Endodoncia">Endodoncia</option>
+                        <option value="Ortodoncia">Ortodoncia</option>
+                        <option value="Protesis Dental">Pr&oacute;tesis Dental</option>
+                        <option value="Implante">Implante</option>
+                        <option value="Caries">Caries</option>
+                        <option value="Estetica Dental"> ESt&eacute;tica Dental</option>
+                </select>
+                <br>
+                <br>
+                <label for="radio">Num. Rad&iacute;ografia</label>&nbsp;&nbsp;&nbsp;&nbsp;
+               <input class="texto" type="text" name="radio" maxlength="12" requiere > 
+                <br>
+                <br>
                 <label for="doctor">NOM. DOCTOR/A</label>&nbsp;&nbsp;&nbsp;&nbsp;
                 <select class="seleccion1" name="doctor" id="doctor" required>
                         <option></option>
@@ -151,7 +167,7 @@
                 </select>
                 <br>
                 <br>
-                <input class="envio" type="submit" name="enviar" value="enviar">
+                <button class="envio" type="submit">Crear Registro</button>
             </form>
         </blockquote>
     </body>

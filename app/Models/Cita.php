@@ -11,6 +11,16 @@ class Cita extends Model
 
     protected $table = "citas";
 
+    protected $fillable = [
+        'num_radiogra',
+        'tratamiento',
+        'descripcion',
+        'fecha',
+        'hora',
+        'cita',
+        'num_expe',
+    ];
+
     public function cliente(){
         return $this->belongsTo('app\Models\Cliente');
     }

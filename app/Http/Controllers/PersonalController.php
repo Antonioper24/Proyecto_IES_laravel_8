@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Administradore;
+use App\Models\Cliente;
 use App\Models\Personal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,9 +17,22 @@ class PersonalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function login()
+    public function login(Request $request)
     {
-        return view('personal.initdoctor');
+        $comprobar = Personal::find($request->user);
+        
+        //return $comprobar;
+        if(Hash::check($request->pwd, $comprobar->password)){
+            if ($comprobar->personal === 'Doctor'){
+            return view('personal.initdoctor');
+            }
+            else {
+                return view('personal.initpersonal');
+            }
+        }
+        else {
+            return back()->withInput();
+        }
     }
 
     public function index(){
@@ -34,7 +49,9 @@ class PersonalController extends Controller
      */
     public function create()
     {
-        //
+        $datos = Cliente::all();
+
+        return view('personal.consultar', compact('datos'));
     }
 
     /**
@@ -56,6 +73,7 @@ class PersonalController extends Controller
         $personal->telefono = $request->telefono;
         $personal->correo = $request->correo;
         $personal->direccion = $request->direccion;
+        $personal->personal = $request->tipo;
         $personal->ciudad = $request->ciudad;
         $personal->id_doctor = $request->iddoctor;
         $personal->Password = Hash::make($request->pwd);
@@ -74,9 +92,11 @@ class PersonalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $datos = Personal::all();
+
+        return view('personal.show', compact('datos'));
     }
 
     /**
@@ -108,6 +128,7 @@ class PersonalController extends Controller
         $datos->telefono = $request->telefono;
         $datos->correo = $request->correo;
         $datos->direccion = $request->direccion;
+        $datos->personal = $request->tipo;
         $datos->ciudad = $request->ciudad;
         $datos->id_doctor = $request->iddoctor;
         $datos->Password = Hash::make($request->pwd);
@@ -129,5 +150,15 @@ class PersonalController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+    
+        $request->session()->invalidate();
+    
+        $request->session()->regenerateToken();
+    
+        return view('personal.doctores');
     }
 }

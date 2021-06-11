@@ -98,7 +98,7 @@ input {
         	<br>
         	<div>
             		<blockquote class="formu">
-                		<form action="comprobar" method="POST">
+                		<form action="{{ route('cliente.create') }}" method="POST">
                    			 @csrf
                     			<br>
                     			<br>
@@ -108,7 +108,7 @@ input {
                     			<br>
                     			<br>
                     			<label for="expediente">Num. Expediente</label>
-                    			<input class="texto1"  type="text" name="expediente" id="expediente" placeholder="numero de expediente" required>
+                    			<input class="texto1"  type="text" name="expediente" id="expediente" placeholder="numero de expediente" maxlength="15" required>
                     			<br>
                     			<br>
                     			<label for="ciudad">Ciudad</label>
@@ -132,13 +132,13 @@ input {
 
         	<div id="piefun">
             		<h4 class="pie">Siguenos en nuestras redes sociales</h4>&nbsp;&nbsp;&nbsp;
-            		<a id="pie1" href="https://www.brandandhealth.com/facebook-para-clinicas-dentales/">
+            		<a id="pie1" href="https://www.facebook.com/clinicafriedlanderbcn/">
                     		<img src="imagen/Facebook.png">
             		</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            		<a  id="pie2" href="">
+            		<a  id="pie2" href="https://twitter.com/clinicaqboca">
                 	    	<img src="imagen/twitter.png">
             		</a>&nbsp;&nbsp;&nbsp;
-            		<a id="pie3" href="">
+            		<a id="pie3" href="https://es-es.facebook.com/clinicas.dentales.716">
                     		<img src="imagen/Instagram.png">
             		</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             		<p class="pie1"><em>

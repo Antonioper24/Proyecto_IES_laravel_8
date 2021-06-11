@@ -22,7 +22,8 @@ class CreatePersonalTable extends Migration
             $table->string('correo',75);
             $table->string('direccion',80);
             $table->string('ciudad',40);
-            $table->string('id_doctor',10)->unique();
+            $table->string('personal',15);
+            $table->string('id_doctor',10)->nullable()->unique();
             $table->string('password',80);
             $table->char('id_admin',10);
             $table->timestamps();

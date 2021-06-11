@@ -57,7 +57,7 @@
                 <option value="administradores" >Administradores</option>
             </select>&nbsp;&nbsp;&nbsp;&nbsp;
             <label class="texto2">REFERENCIA</label>
-            <input class="texto" type="text" name="personas" require>
+            <input class="texto" type="search" name="personas" required>
             <label for="datos" class="texto1">DATOS</label>
             <select name="base" require>
                 <option></option>

@@ -22,6 +22,8 @@ class CreateClientesTable extends Migration
             $table->char('DNI',9);
             $table->string('direccion',80);
             $table->string('ciudad',40);
+            $table->string('num_radiogra',12);
+            $table->string('tratamiento',40);
             $table->char('id_personal',10);
             $table->timestamps();
             $table->unique('num_expe');

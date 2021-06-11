@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-       <title>Comprobaciones</title>
+       <title>Cita creada</title>
        <meta charset="utf-8">
    </head>
    <style>
@@ -57,7 +57,7 @@ button {
    </style> 
     <body>
         <div>
-         <h2>Los datos han sido Almacenados</h2>
+         <h2>Expediente Creado y Actualizado</h2>
         </div>
         <br>
         <br>
@@ -66,9 +66,9 @@ button {
         </blockquote>
         <br>
         <br>
-        <form action="{{ route('administrador.index') }}" method="POST">
+        <form action="{{ route('cita.index') }}" method="POST">
         @csrf
-                <button type="submit">Volver a la pagina de inicio</button>
+                <button>Volver a la pagina de inicio</button>
         </form>
 
     </body>

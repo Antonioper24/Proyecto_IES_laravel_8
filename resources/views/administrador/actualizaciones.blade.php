@@ -37,6 +37,14 @@
                 opacity: 0.79;
             }
 
+            .formu1 {
+                margin-left: 240px;
+                width: 918px;
+                height: 810px;
+                background: url(https://thumbs.dreamstime.com/z/marco-abstracto-colorido-con-las-manchas-blancas-negras-del-chapoteo-27015616.jpg);
+                opacity: 0.79;
+            }
+
             input {
                 height: 26px;
                 border-color: blue;
@@ -91,7 +99,21 @@
                 width: 170px;
                 height: 32px;
                 color: white;
-            }  
+            } 
+   
+             .seleccion1 {
+                margin-left: 90px;
+                padding-right: 25px;
+                height: 25px;
+                border-color: tomato;
+            } 
+
+            .seleccion {
+                margin-left: 113px;
+                padding-right: 25px;
+                height: 25px;
+                border-color: tomato;
+            } 
        </style>
     </head>
     <body>
@@ -148,8 +170,12 @@
                 <input class="titulo4" type="text" name="ciudad" value="{{$person->ciudad}}"  required>
                 <br>
                 <br>
+                <label for="tipo">Personal</label>&nbsp;&nbsp;
+                <input class="titulo4" type="text" name="tipo" value="{{$person->personal}}">
+                <br>
+                <br>
                 <label for="iddoctor">ID Doctor</label>&nbsp;&nbsp;
-                <input class="titulo4" type="text" name="iddoctor" value="{{$person->id_doctor}}" required>
+                <input class="titulo4" type="text" name="iddoctor" value="{{$person->id_doctor}}">
                 <br>
                 <br>
                 <label for="pwd">Contrase&ntilde;a<label>&nbsp;
@@ -204,8 +230,29 @@
                 <input class="titulo4"  type="text" name="ciudad" value="{{$person->ciudad}}"  required>
                 <br>
                 <br>
+                <label for="tratami">Tratamiento</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <select class="seleccion1" name="tratami" id="tratami" required>
+                        <option>{{$person->tratamiento}}</option>
+                        <option value="Endodoncia">Endodoncia</option>
+                        <option value="Ortodoncia">Ortodoncia</option>
+                        <option value="Protesis Dental">Pr&oacute;tesis Dental</option>
+                        <option value="Implante">Implante</option>
+                        <option value="Caries">Caries</option>
+                        <option value="Estetica Dental"> ESt&eacute;tica Dental</option>
+                </select>
+                <br>
+                <br>
+                <label for="radio">Num. Rad&iacute;ografia</label>&nbsp;&nbsp;
+               <input class="titulo1" type="text" name="radio" value="{{$person->num_radiogra}}" requiere> 
+                <br>
+                <br>
                 <label for="doctor">ID. Doctor/a</label>
-                <input class="titulo6" type="text" name="doctor" value="{{$person->id_personal}}"  required>
+                <select class="seleccion" name="doctor" id="doctor" required>
+                        <option></option>
+                        @foreach ($nombre as $apellido)
+                            <option value="{{$apellido->id_personal}}">{{$apellido->apellido1}},{{$apellido->nombre}}</option>
+                        @endforeach
+                </select>
                 <br>
                 <br>
                 <input class="envio" type="submit" name="enviar" value="enviar">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-       <title>Consulta Personal</title>
+       <title>Tus Citas</title>
        <meta charset="utf-8">
    </head>
    <style>
@@ -96,41 +96,28 @@ option {
    </style> 
     <body>
         <div>
-         <h2>NUESTRO PERSONAL</h2>
+         <h2>VUESTRAS CITAS</h2>
         </div>
         <br>
         <br>
         <br>
         <table>
             <tr>
-                <th>ID</th>
-                <th>NOMBRE</th>
-                <th>APELLIDOS</th>
-                <th>TELEFONO</th>
-                <th>CIUDAD</th>
-                <th>CORREO ELECTR&Oacute;NICO</th>
-                <th>DIRECCI&Oacute;N</th>
-                <th>TI. PERSONAL</th>
+                <th>APELLIDO</th>
+                <th>FECHA</th>
+                <th>HORA</th>
             </tr>
-                @foreach($datos as $data)
             <tr>
-                    <td class="input">{{$data->id_personal}}</td>
-                    <td class="input">{{$data->nombre}}</td>
-                    <td class="input1">{{$data->apellido1}} {{$data->apellido2}}</td>
-                    <td class="input">{{$data->telefono}}</td>
-                    <td class="input">{{$data->ciudad}}</td>
-                    <td class="input1">{{$data->correo}}</td>
-                    <td class="input1">{{$data->direccion}}</td>
-                    <td class="input">{{$data->personal}}</td>
+                    <td class="input">{{$nombre->apellido1}}</td>
+                    <td class="input">{{$cita->fecha}}</td>
+                    <td class="input">{{$cita->hora}}</td>
             </tr>
-                @endforeach
         </table>
         <br>
         <br>
         <br>
         <br>
-        <form action="{{ route('administrador.index') }}" method="POST">
-        @csrf
+        <form action="{{ route('index') }}" method="GET">
                 <button class="regresar">Volver a la pagina de inicio</button>
         </form>
         

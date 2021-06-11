@@ -21,6 +21,8 @@ class CreateContactosTable extends Migration
             $table->string('ciudad',25);
             $table->string('correo',70)->nullable();
             $table->string('cita',20)->nullable();
+            $table->date('fecha')->nullable();
+            $table->string('hora',5)->nullable();
             $table->timestamps();
         });
     }

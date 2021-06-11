@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-       <title>Creaci&oacute;n de cita</title>
+       <title>Actualizaci&oacute;n de Citas</title>
        <meta charset="utf-8">
    </head>
    <style>
@@ -32,8 +32,8 @@ h2{
 }
 
 table { 
-    margin-left: 10px;
-    width: 1320px;
+    margin-left: 80px;
+    width: 1120px;
     border: 1px solid white;
 }
 
@@ -44,17 +44,17 @@ th {
     font-family: monospace;
     font-size: 20px;
     color: red;
-    background-image: linear-gradient(to right, orange,yellow,chocolate);
+    background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));background-image: linear-gradient(to right, orange,yellow,chocolate);
 }
 
 td {
-    width: 50px;
+    width: 25px;
     height: 35px;
-
+    
 }
 
 .input {
-    width: 175px;
+    width: 205px;
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 15px;
@@ -65,7 +65,7 @@ td {
 }
 
 .input1 {
-    width: 105px;
+    width: 155px;
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 15px;
@@ -76,14 +76,14 @@ td {
 }
 
 select {
-    width: 125px;
-    height: 29.50px;
+    width: 120px;
+    height: 30px;
     background-image: linear-gradient(to right, rgba(44, 255, 255, 0.6), rgba(39, 151, 255, 0.6));
 }
 
 option {
     background-color: #008CBA;
-    color: white;
+    color: black;
 }
 
 .regresar {
@@ -96,38 +96,35 @@ option {
    </style> 
     <body>
         <div>
-         <h2>DATOS DE SOLICITUD DE CITAS</h2>
+         <h2>CREACI&Oacute;N DEL DIA DE LA CITA</h2>
         </div>
         <br>
         <br>
         <br>
         <table>
             <tr>
-                <th>ID</th>
-                <th>NOMBRE</th>
-                <th>APELLIDOS</th>
-                <th>TELEFONO</th>
-                <th>CIUDAD</th>
-                <th>CORREO ELECTR&Oacute;NICO</th>
+                 <th>NOMBRE</th>
+                <th>APELLIDO</th>
+                <th>IDENTIFICADOR</th>
+                <th>EXPEDIENTE</th>
                 <th>FECHA</th>
                 <th>HORA</th>
-                <th>APROBAR</th>
                 <th>CITA</th>
             </tr>
-                @foreach($datos as $cita)
-                <form action="{{ route('contacto.update')}}" method="POST">
+                @foreach ($busca as $data)
+                <form action="{{ route('cita.update')}}" method="POST">
                 @csrf
+
                 @method('put')
             <tr>
-                    <td><input class="input1" type="text" name="id" value="{{$cita->id}}"></td>
-                    <td><input class="input1" type="text" name="nombre" value="{{$cita->nombre}}"></td>
-                    <td><input class="input" type="text" name="apellido" value="{{$cita->apellido}}"></td>
-                    <td><input class="input1" type="text" name="telefono" value="{{$cita->telefono}}"></td>
-                    <td><input class="input1" type="text" name="ciudad" value="{{$cita->ciudad}}"></td>
-                    <td><input class="input" type="email" name="correo" value="{{$cita->correo}}"></td>
-                    <td><input class="input" type="date" name="fecha" value="{{$cita->fecha}}"></td>
+                    <td><input class="input1" type="button" name="id" value="{{$data->nombre}}" require></td>
+                    <td><input class="input" type="button" name="apellido" value="{{$data->apellido1}} {{$data->apellido2}}"></td>
+                    @foreach ($cita[$data->num_expe] as $nombre)
+                    <td><input class="input1" type="text" name="id" value="{{$nombre['id']}}"></td>
+                    <td><input class="input" type="text" name="expediente" value="{{$nombre['num_expe']}}"></td>
+                    <td><input class="input1" type="date" name="fecha" value="{{$nombre['fecha']}}"></td>
                     <td><select name="hora">
-                            <option>{{$cita->hora}}</option>
+                            <option>{{$nombre['hora']}}</option>
                             <option value="09:30">09:30</option>
                             <option value="10:15">10:15</option>
                             <option value="11:00">11:00</option>
@@ -139,23 +136,23 @@ option {
                             <option value="19:00">19:00</option>
                         </select>
                     </td>
-                    <td><input class="input1" type="button" name="aprobado" value="{{$cita->cita}}"></td>
                     <td><select name="cita">
-                            <option></option>
+                            <option>{{$nombre['cita']}}</option>
                             <option value="Confirmado">Confirmado</option>
                             <option value="Anulado">Anulado</option>
                         </select>
                     </td>
-                    <td><button class="input1"  type="submit">Actualizar</button></td>
-            </tr>
+                    <td><button class="input1"  type="submit">Crear Cita</button></td>
+                    @endforeach
                 </form>
+            </tr>
                 @endforeach
         </table>
         <br>
         <br>
         <br>
         <br>
-        <form action="{{ route('administrador.index') }}" method="POST">
+        <form action="{{ route('cita.create') }}" method="POST">
         @csrf
                 <button class="regresar">Volver a la pagina de inicio</button>
         </form>

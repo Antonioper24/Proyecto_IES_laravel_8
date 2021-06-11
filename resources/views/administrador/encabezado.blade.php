@@ -100,7 +100,7 @@ button {
                       <p>Altas</p>
                       <div class="dropdown-content">
                                 <a href="{{ route('cliente.index') }}">Clientes</a>
-                                <a href="{{ route('personal.index') }}">Doctores</a>
+                                <a href="{{ route('personal.index') }}">Personal</a>
                                 <a href="{{ route('formadmin') }}">Administradores</a>
                       </div>
               </li>
@@ -110,6 +110,7 @@ button {
                 <div class="dropdown-content">
                   <a  href="{{ route('contacto.index') }}">Citas</a>
                   <a href="{{ route('cliente.show') }}">Clientes</a>
+                  <a href="{{ route('personal.show') }}">Personal</a>
                 </div>
               </li>
               <li>

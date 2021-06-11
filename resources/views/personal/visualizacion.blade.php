@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-       <title>Consultas de cita</title>
+       <title>visualizaci&oacute;n de citas</title>
        <meta charset="utf-8">
    </head>
    <style>
@@ -44,7 +44,7 @@ th {
     font-family: monospace;
     font-size: 20px;
     color: red;
-    background-image: linear-gradient(to right, orange,yellow,chocolate);
+    background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));background-image: linear-gradient(to right, orange,yellow,chocolate);
 }
 
 td {
@@ -64,22 +64,6 @@ td {
     
 }
 
-.input1 {
-    width: 135px;
-    text-align: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 15px;
-    background-image: linear-gradient(to right, rgba(44, 255, 255, 0.6), rgba(39, 151, 255, 0.6));
-    border: 0.2px solid white;
-    height: 30.5px;
-    
-}
-
-option {
-    background-color: #008CBA;
-    color: black;
-}
-
 .regresar {
     background-image: linear-gradient(red, yellow, red);
     margin-left: 550px;
@@ -90,38 +74,32 @@ option {
    </style> 
     <body>
         <div>
-         <h2>DATOS DE CLIENTES</h2>
+         <h2>CITAS</h2>
         </div>
         <br>
         <br>
         <br>
         <table>
             <tr>
-                <th>ID</th>
                 <th>NOMBRE</th>
                 <th>APELLIDO</th>
                 <th>MEDICO</th>
-                <th>CITA</th>
-                <th>EXPEDIENTE</th>
-                <th>NUEVA CITA</th>
+                <th>FECHA</th>
+                <th>HORA</th>
+                <th>STATUS</th>
             </tr>
-                @foreach($datos as $data)
-                <form action="{{ route('cita.show')}}" method="POST">
-                @csrf
+            @foreach ($busca as $datos)
             <tr>
-                    <td><input class="input1" type="text" name="id" value="{{$data->num_expe}}" require></td>
-                    <td><input class="input" type="button" name="nombre" value="{{$data->nombre}}"></td>
-                    <td><input class="input" type="button" name="apellido" value="{{$data->apellido1}}"></td>
-                    <td><input class="input" type="button" name="doctor" value="{{$data->id_personal}}"></td>
-                    <td><button class="input1"  type="submit">Primera Cita</button></td>
-                </form>
-                <form action="{{ route('cita.buscador')}}" method="POST">
-                    @csrf
-                    <td><input class="input" type="text" name="expediente" value="{{$data->num_expe}}"></td>
-                    <td><button class="input1"  type="submit">Cita Siguiente</button></td>
-                </form>
+                    <td class="input">{{$datos->nombre}}</td>
+                    <td class="input">{{$datos->apellido1}}</td>
+                    <td class="input">{{$datos->id_personal}}</td>
+                    @foreach ($cita[$datos->num_expe] as $nombre)
+                    <td class="input">{{$nombre['fecha']}}</td>
+                    <td class="input">{{$nombre['hora']}}</td>
+                    <td class="input">{{$nombre['cita']}}</}<td>
+                    @endforeach
             </tr>
-                @endforeach
+            @endforeach
         </table>
         <br>
         <br>

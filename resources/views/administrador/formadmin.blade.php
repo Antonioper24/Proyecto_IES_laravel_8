@@ -85,7 +85,7 @@
                 margin-left: 789px;
                 border-color: brown;
                 background-color: rgba(63, 63, 66, 0.925);
-                width: 70px;
+                width: 95px;
                 height: 32px;
                 color: white;
             }        
@@ -104,7 +104,7 @@
                 <br>
                 <br>
                 <label for="idadmin">ID. administrador</label>&nbsp;&nbsp;&nbsp;
-                <input class="texto"  type="text" name="idadmin" id="idadmin" required>
+                <input class="texto"  type="text" name="idadmin" id="idadmin" maxlength="10" required>
                 <br>
                 <br>
                 <label for="nombre">Nombre</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -120,7 +120,7 @@
                 <br>
                 <br>
                 <label for="telefono">Tel&eacute;fono</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="texto1"  type="tel" name="telefono" id="telefono" required>
+                <input class="texto1"  type="tel" name="telefono" id="telefono" maxlength="9" required>
                 <br>
                 <br>
                 <label for="correo">Correo Electr&oacute;nico</label>&nbsp;
@@ -144,7 +144,7 @@
                 <input class="texto4"  type="password" name="pwd" id="pwd" required>
                 <br>
                 <br>
-                <input class="envio" type="submit" name="enviar" value="enviar"></button>
+                <button class="envio" type="submit">Crear Registro</button>
             </form>
         </blockquote>
     </body>

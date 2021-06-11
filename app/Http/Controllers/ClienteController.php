@@ -16,7 +16,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $nombre = Personal::all();
+        $nombre = Personal::all()->where('personal', '=','Doctor');
 
          return view('administrador.formularioCli', compact('nombre'));
     }
@@ -26,9 +26,29 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $datos = Cliente::find($request->expediente);
+
+        if ($datos === null){
+            return view('cliente.resolucion');
+
+        }
+   
+        $data = Cliente::find($request->expediente);
+
+         if ($data->ciudad === $request->ciudad) { 
+             
+                $busca = DB::table('citas')->where('num_expe', '=', $data->num_expe)->first();
+
+                return view('cliente.vista', ['nombre' => $data, 'cita' => $busca]);
+
+        }
+        else {
+            return view('cliente.resolucion');
+        }
+
+        //return $datos;
     }
 
     /**
@@ -52,6 +72,8 @@ class ClienteController extends Controller
         $cliente->DNI = $request->dni;
         $cliente->direccion = $request->direccion;
         $cliente->ciudad = $request->ciudad;
+        $cliente->num_radiogra = $request->radio;
+        $cliente->tratamiento = $request->tratami;
         $cliente->id_personal = $request->doctor; 
 
         //return $cliente;
@@ -68,9 +90,11 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $data = Cliente::all();
+
+        return view('administrador.clientes', compact('data'));
     }
 
     /**
@@ -104,6 +128,8 @@ class ClienteController extends Controller
         $tablas->DNI = $request->dni;
         $tablas->direccion = $request->direccion;
         $tablas->ciudad = $request->ciudad;
+        $tablas->num_radiogra = $request->radio;
+        $tablas->tratamiento = $request->tratami;
         $tablas->id_personal = $request->doctor; 
         
         //return $tablas;

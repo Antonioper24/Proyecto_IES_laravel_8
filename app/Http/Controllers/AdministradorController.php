@@ -21,7 +21,7 @@ class AdministradorController extends Controller
      */
     public function login(Request $request){
 
-        $usuarios = DB::table('administradores')->where('id_admin',$request->user)->first();
+        $usuarios = Administradore::find($request->user);
 
         if(Hash::check($request->pwd, $usuarios->password)){
             return view('administrador.initadministrador');
@@ -100,11 +100,11 @@ class AdministradorController extends Controller
             'personas' => 'required',
             'base' => 'required'
         ]);
-
+        $nombre = Personal::all()->where('personal', '=', 'Doctor');
         $var = $request->base;
         $persons = DB::table($request->tipo)->where($var,$request->personas)->first();
         if($persons->$var === $request->personas){
-            return view('administrador.actualizaciones', ['person'=>$persons, 'tipos'=>$request->tipo]);
+            return view('administrador.actualizaciones', ['person'=>$persons, 'tipos'=>$request->tipo , 'nombre'=>$nombre]);
          }
          else {
              return back()->withInput();

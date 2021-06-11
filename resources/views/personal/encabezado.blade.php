@@ -59,8 +59,7 @@ button {
         <img src="../imagen/logo2.png">
         <nav>
             <ul>
-              <li><a  href="{{ route('personal.create') }}">Consultas</a></li>
-              <li><a  href="{{ route('cita.mostrar') }}">Cita</a></li>
+              <li><a  href="{{ route('cita.visita') }}">Citas</a></li>
               <li>
                       <form action="{{ route('personal.logout') }}" method="POST">
                         @csrf

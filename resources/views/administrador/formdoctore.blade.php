@@ -94,11 +94,18 @@
                 border-color: blue;
             }
 
+            .seleccion2 {
+                margin-left: 168px;
+                padding-right: 25px;
+                height: 25px;
+                border-color: blue;
+            }
+
             .envio {
                 margin-left: 789px;
                 border-color: brown;
                 background-color: rgba(63, 63, 66, 0.925);
-                width: 70px;
+                width: 95px;
                 height: 32px;
                 color: white;
             }        
@@ -107,7 +114,7 @@
     </head>
     <body>
         <div>
-            <h2>Altas de Doctores</h2>
+            <h2>Altas del Personal</h2>
         </div>
         <br>
         <br>
@@ -117,7 +124,7 @@
                 <br>
                 <br>
                 <label for="idperson">ID. personal</label>
-                <input class="texto5"  type="text" name="idperson" id="idperson" placeholder="DOC o REC" required>
+                <input class="texto5"  type="text" name="idperson" id="idperson" placeholder="DOC o REC" maxlength="10" required>
                 <br>
                 <br>
                 <label for="nombre">Nombre</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -133,7 +140,7 @@
                 <br>
                 <br>
                 <label for="telefono">Tel&eacute;fono</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="texto1"  type="tel" name="telefono" id="telefono" required>
+                <input class="texto1"  type="tel" name="telefono" id="telefono" maxlength="9" required>
                 <br>
                 <br>
                 <label for="correo">Correo Electr&oacute;nico</label>&nbsp;
@@ -142,6 +149,14 @@
                 <br>
                 <label for="direccion">Direcci&oacute;n</label>&nbsp;&nbsp;&nbsp;
                 <input class="texto3"  type="text" name="direccion" id="direccion" required>
+                <br>
+                <br>
+                <label for="tipo">TI. Personal</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <select class="seleccion2" name="tipo" id="tipo" required>
+                        <option></option>
+                        <option value="Doctor">Doctor/a</option>
+                        <option value="Recepcionista">Recepcionista</option>
+                </select>
                 <br>
                 <br>
                 <label for="ciudad">Ciudad</label>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -154,7 +169,7 @@
                 <br>
                 <br>
                 <label for="iddoctor">ID Doctor</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                <input class="texto1"  type="text" name="iddoctor" id="iddoctor" required>
+                <input class="texto1"  type="text" name="iddoctor" id="iddoctor" maxlength="10">
                 <br>
                 <br>
                 <label for="pwd">Contrase&ntilde;a<label>&nbsp;&nbsp;&nbsp;
@@ -170,7 +185,7 @@
                 </select>
                 <br>
                 <br>
-                <input class="envio" type="submit" name="enviar" value="enviar"></button>
+                <button class="envio" type="submit">Crear Registro</button>
             </form>
         </blockquote>
     </body>
